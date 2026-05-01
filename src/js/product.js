@@ -22,4 +22,4 @@ document
   .addEventListener("click", addToCartHandler);
 
 
-console.log(dataSource.findProductById(productId));
+console.log(await dataSource.findProductById(productId));
