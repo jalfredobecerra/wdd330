@@ -7,6 +7,8 @@ loadHeaderFooter();
 const category = getParam("category");
 const dataSource = new ProductData();
 const element = document.querySelector(".product-list");
-const productList = new ProductList(category, dataSource, element);
+const search = getParam("search");
+const searchTerm = category || search;
+const productList = new ProductList(searchTerm, dataSource, element);
 
 productList.init();
