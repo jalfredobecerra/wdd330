@@ -4,13 +4,19 @@ function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") ?? [];
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  const total = cartItems.reduce(
+    (accumulator, item) => accumulator + item.FinalPrice,
+    0,
+  );
+
+  document.querySelector("#cart-total").textContent = `Total: ${total}`;
 }
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image}"
+      src="${item.Images.PrimaryMedium}"
       alt="${item.Name}"
     />
   </a>
