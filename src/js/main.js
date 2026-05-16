@@ -1,6 +1,4 @@
 import { loadHeaderFooter } from "./utils.mjs";
-import ProductData from "./ProductData.mjs";
-import ProductList from "./ProductList.mjs";
 
 async function init() {
   await loadHeaderFooter();
@@ -12,14 +10,6 @@ async function init() {
       event.preventDefault(); // stops the page from reloading
       window.location.href = `/product_listing/?search=${searchTerm}`;
     });
-
-  const dataSource = new ProductData("tents");
-
-  const element = document.querySelector(".product-list");
-
-  const productList = new ProductList("Tents", dataSource, element);
-
-  productList.init();
 }
 
 init();
