@@ -1,14 +1,18 @@
 import { loadHeaderFooter } from "./utils.mjs";
 import CheckoutProcess from "./CheckoutProcess.mjs";
 
-const checkout = new CheckoutProcess();
+async function init() {
+  await loadHeaderFooter();
 
-checkout.calculateSubtotal();
+  const checkout = new CheckoutProcess("so-cart", ".order-summary");
 
-const zipCode = document.querySelector("#zipCode");
+  checkout.init();
 
-zipCode.addEventListener("blur", () => {
-  checkout.calculateOrderTotal();
-});
+  const zipCode = document.querySelector("#zipCode");
 
-loadHeaderFooter();
+  zipCode.addEventListener("blur", () => {
+    checkout.calculateOrderTotal();
+  });
+}
+
+init();
