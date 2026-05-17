@@ -13,6 +13,13 @@ async function init() {
   zipCode.addEventListener("blur", () => {
     checkout.calculateOrderTotal();
   });
+
+  const form = document.querySelector("#form");
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    await checkout.checkout(form);
+  });
 }
 
 init();
