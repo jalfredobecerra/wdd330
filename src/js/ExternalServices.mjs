@@ -32,8 +32,7 @@ export default class ExternalServices {
       body: JSON.stringify(payload)
     }
     const response = await fetch(`${baseURL}checkout`, options);
-    const data = await convertToJson(response);
-    return data.Result;
-    
+    const data = await response.json();
+    return data;
   }
 }
